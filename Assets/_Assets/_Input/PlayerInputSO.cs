@@ -7,6 +7,8 @@ namespace _Assets._Input
    [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "PlayerHelpers/PlayerInput")]
    public class PlayerInputSo : ScriptableObject, PlayerInputConfig.IPauseMenuActions, PlayerInputConfig.IPlayerMovementActions, IAgentInput
    {
+      #region Variables
+
       private PlayerInputConfig _input;
       
       public event Action OnMenu;
@@ -17,6 +19,8 @@ namespace _Assets._Input
       public event Action OnWeaponChangePressed;
       public event Action OnDashPressed;
       public Vector2 MovementVector { get; private set; }
+
+      #endregion
       private void OnEnable()
       {
          if (_input != null) return;
@@ -43,29 +47,27 @@ namespace _Assets._Input
          OnDashPressed = null;
       }
 
+      #region Inputs
+
       public void OnEnterMenu(InputAction.CallbackContext context)
       {
-         if (context.phase == InputActionPhase.Performed)
-         {
-            OnMenu?.Invoke();
-            _input.PlayerMovement.Disable();
-            _input.PauseMenu.Enable();
-         }
+         if (context.phase != InputActionPhase.Performed) return;
+         OnMenu?.Invoke();
+         _input.PlayerMovement.Disable();
+         _input.PauseMenu.Enable();
       }
       public void OnExitMenu(InputAction.CallbackContext context)
       {
-         if (context.phase == InputActionPhase.Performed)
-         {
-            OnMenu?.Invoke();
-            _input.PauseMenu.Disable();
-            _input.PlayerMovement.Enable();
-         }
+         if (context.phase != InputActionPhase.Performed) return;
+         OnMenu?.Invoke();
+         _input.PauseMenu.Disable();
+         _input.PlayerMovement.Enable();
       }
       
       public void OnMoveAgent(InputAction.CallbackContext context)
       {
-        MovementVector = context.ReadValue<Vector2>();
-        OnMovement?.Invoke(MovementVector);
+         MovementVector = context.ReadValue<Vector2>();
+         OnMovement?.Invoke(MovementVector);
       }
 
       public void OnJump(InputAction.CallbackContext context)
@@ -90,26 +92,23 @@ namespace _Assets._Input
       }
       public void OnAttack(InputAction.CallbackContext context)
       {
-         if (context.phase == InputActionPhase.Performed)
-         {
-            OnAttackPressed?.Invoke();
-         }
+         if (context.phase != InputActionPhase.Performed) return;
+         OnAttackPressed?.Invoke();
       }
 
       public void OnDash(InputAction.CallbackContext context)
       {
-         if (context.phase == InputActionPhase.Performed)
-         {
-            OnDashPressed?.Invoke();
-         }
+         if (context.phase != InputActionPhase.Performed) return;
+         OnDashPressed?.Invoke();
       }
 
       public void OnWeaponChange(InputAction.CallbackContext context)
       {
-         if (context.phase == InputActionPhase.Performed)
-         {
-            OnWeaponChangePressed?.Invoke();
-         }
+         if (context.phase != InputActionPhase.Performed) return;
+         OnWeaponChangePressed?.Invoke();
       }
+
+      #endregion
+     
    }
 }
