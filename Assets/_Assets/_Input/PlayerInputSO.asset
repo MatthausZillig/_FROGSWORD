@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 838f4ec45ed8d5e45a6ae7094359b4a0, type: 3}
   m_Name: PlayerInputSO
-  m_EditorClassIdentifier: Assembly-CSharp:_Assets._Input:PlayerInputSo
+  m_EditorClassIdentifier: 
