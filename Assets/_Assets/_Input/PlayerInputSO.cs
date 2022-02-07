@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 namespace _Assets._Input
 {
-   [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "PlayerHelpers/PlayerInput")]
-   public class PlayerInputSo : ScriptableObject, PlayerInputConfig.IPauseMenuActions, PlayerInputConfig.IPlayerMovementActions, IAgentInput
+   [CreateAssetMenu(fileName = "PlayerInputSO", menuName = "Player Helpers/New PlayerInput")]
+   public class PlayerInputSO : ScriptableObject, PlayerInputConfig.IPauseMenuActions, PlayerInputConfig.IPlayerMovementActions, IAgentInput
    {
       #region Variables
 
