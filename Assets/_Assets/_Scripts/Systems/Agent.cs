@@ -10,17 +10,20 @@ namespace _Assets._Scripts.Systems
         public Rigidbody2D rb2d;
         public IAgentInput PlayerInput;
         public AgentAnimation AnimationManager;
+        public AgentRenderer AgentRenderer;
 
         private void Awake()
         {
             rb2d = GetComponent<Rigidbody2D>();
             PlayerInput = GetComponentInParent<IAgentInput>();
             AnimationManager = GetComponentInChildren<AgentAnimation>();
+            AgentRenderer = GetComponentInChildren<AgentRenderer>();
         }
 
         private void Start()
         {
             PlayerInput.OnMovement += HandleMovement;
+            PlayerInput.OnMovement += AgentRenderer.FaceDirection;
         }
 
         private void HandleMovement(Vector2 input)
