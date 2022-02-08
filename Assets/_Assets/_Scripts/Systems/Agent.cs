@@ -6,15 +6,16 @@ namespace _Assets._Scripts.Systems
 {
     public class Agent : MonoBehaviour
     {
-        [SerializeField]
+        [SerializeField] [Header("Rigidbody2D")]
         public Rigidbody2D rb2d;
-
         public IAgentInput PlayerInput;
+        public AgentAnimation AnimationManager;
 
         private void Awake()
         {
             rb2d = GetComponent<Rigidbody2D>();
             PlayerInput = GetComponentInParent<IAgentInput>();
+            AnimationManager = GetComponentInChildren<AgentAnimation>();
         }
 
         private void Start()
@@ -24,8 +25,22 @@ namespace _Assets._Scripts.Systems
 
         private void HandleMovement(Vector2 input)
         {
-            var movementInput = new Vector2(5 * input.x, rb2d.velocity.y);
-            rb2d.velocity = movementInput;
+            if (Mathf.Abs(input.x) > 0)
+            {
+                if (Mathf.Abs(rb2d.velocity.x) < 0.01f)
+                {
+                    AnimationManager.PlayAnimation(AnimationType.run);
+                }
+                rb2d.velocity = new Vector2(input.x * 5, rb2d.velocity.y);
+            }
+            else
+            {
+                if (Mathf.Abs(rb2d.velocity.x) > 0.01f)
+                {
+                    AnimationManager.PlayAnimation(AnimationType.idle);
+                }
+                rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+            }
         }
     }
 }
