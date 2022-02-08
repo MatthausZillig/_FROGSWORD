@@ -222,6 +222,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 0}
+  AnimationManager: {fileID: 0}
+  AgentRenderer: {fileID: 0}
 --- !u!1 &744079813
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +457,7 @@ GameObject:
   - component: {fileID: 1050179722}
   - component: {fileID: 1050179723}
   - component: {fileID: 1050179724}
+  - component: {fileID: 1050179725}
   m_Layer: 0
   m_Name: Avatar
   m_TagString: Untagged
@@ -556,6 +559,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 910a4a98d2f8f81459791a191846e741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1050179725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050179720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083b3fa48c727434f9a97fc3bddbcd26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1104138378
