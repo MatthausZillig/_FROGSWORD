@@ -1,5 +1,6 @@
 using System;
 using _Assets._Input;
+using _Assets._Scripts.Systems.States;
 using UnityEngine;
 
 namespace _Assets._Scripts.Systems
@@ -25,6 +26,11 @@ namespace _Assets._Scripts.Systems
             PlayerInput.OnMovement += HandleMovement;
             PlayerInput.OnMovement += AgentRenderer.FaceDirection;
         }
+        
+        public void TransitionToState(State moveState, IdleState idleState)
+        {
+            throw new NotImplementedException();
+        }
 
         private void HandleMovement(Vector2 input)
         {
@@ -45,5 +51,6 @@ namespace _Assets._Scripts.Systems
                 rb2d.velocity = new Vector2(0, rb2d.velocity.y);
             }
         }
+        
     }
 }
