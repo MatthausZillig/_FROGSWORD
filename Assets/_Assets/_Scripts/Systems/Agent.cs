@@ -27,7 +27,7 @@ namespace _Assets._Scripts.Systems
             PlayerInput.OnMovement += AgentRenderer.FaceDirection;
         }
         
-        public void TransitionToState(State moveState, IdleState idleState)
+        public void TransitionToState(State desiredState, State callingState)
         {
             throw new NotImplementedException();
         }
