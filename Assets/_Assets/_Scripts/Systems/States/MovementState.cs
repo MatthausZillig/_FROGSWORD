@@ -31,7 +31,7 @@ namespace _Assets._Scripts.Systems.States
             SetPlayerVelocity();
             if (Mathf.Abs(_agent.rb2d.velocity.x) < 0.01f)
             {
-                _agent.TransitionToState(IdleState, this);
+                _agent.TransitionToState(IdleState);
             }
         }
 
