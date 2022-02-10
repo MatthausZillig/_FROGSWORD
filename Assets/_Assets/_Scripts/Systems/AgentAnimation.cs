@@ -65,3 +65,7 @@ namespace _Assets._Scripts.Systems
         die
     }
 }
+
+/*
+ * Essa classe gerencia qual animação que vai ser inicializada
+ */

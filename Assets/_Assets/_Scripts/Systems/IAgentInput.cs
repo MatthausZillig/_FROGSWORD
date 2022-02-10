@@ -1,14 +1,21 @@
 ﻿using System;
 using UnityEngine;
 
-public interface IAgentInput
+namespace _Assets._Scripts.Systems
 {
-    Vector2 MovementVector { get; }
+    public interface IAgentInput
+    {
+        Vector2 MovementVector { get; }
 
-    event Action OnAttackPressed;
-    event Action OnJumpPressed;
-    event Action OnJumpReleased;
-    event Action<Vector2> OnMovement;
-    event Action OnWeaponChangePressed;
-    event Action OnDashPressed;
+        event Action OnAttackPressed;
+        event Action OnJumpPressed;
+        event Action OnJumpReleased;
+        event Action<Vector2> OnMovement;
+        event Action OnWeaponChangePressed;
+        event Action OnDashPressed;
+    }
 }
+
+/*
+ * Essa é uma interface com a lista de eventos de input
+ */

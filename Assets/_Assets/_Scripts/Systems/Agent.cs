@@ -8,17 +8,19 @@ namespace _Assets._Scripts.Systems
 {
     public class Agent : MonoBehaviour
     {
-        [SerializeField] [Header("Rigidbody2D")]
+        #region Components and Debugging
+        [SerializeField] [Header("Components")]
         public Rigidbody2D rb2d;
         public IAgentInput PlayerInput;
         public AgentAnimation AnimationManager;
         public AgentRenderer AgentRenderer;
-
-        public State currentState = null, previousState = null;
+        [SerializeField] [Header("State")] public State currentState = null;
+        public State previousState = null;
         public State IdleState;
 
         [Header("State debugging:")]
         public string stateName = "";
+        #endregion
 
         private void Awake()
         {
@@ -26,7 +28,7 @@ namespace _Assets._Scripts.Systems
             PlayerInput = GetComponentInParent<IAgentInput>();
             AnimationManager = GetComponentInChildren<AgentAnimation>();
             AgentRenderer = GetComponentInChildren<AgentRenderer>();
-            State[] states = GetComponentsInChildren<State>();
+            var states = GetComponentsInChildren<State>();
             foreach (var state in states)
             {
                 state.InitializeState(this);
@@ -39,6 +41,17 @@ namespace _Assets._Scripts.Systems
             TransitionToState(IdleState);
         }
         
+        private void Update()
+        {
+            currentState.StateUpdate();
+        }
+
+        private void FixedUpdate()
+        {
+            currentState.StateFixedUpdate();
+        }
+        
+        #region Transition State
         internal void TransitionToState(State desiredState)
         {
             if (desiredState == null)
@@ -51,7 +64,9 @@ namespace _Assets._Scripts.Systems
             DebuggingState();
             
         }
-
+        #endregion
+        
+        #region Debugging
         private void DebuggingState()
         {
             if (previousState == null || previousState.GetType() != currentState.GetType())
@@ -59,15 +74,6 @@ namespace _Assets._Scripts.Systems
                 stateName = currentState.GetType().ToString();
             }
         }
-
-        private void Update()
-        {
-            currentState.StateUpdate();
-        }
-
-        private void FixedUpdate()
-        {
-            currentState.StateFixedUpdate();
-        }
+        #endregion
     }
 }
