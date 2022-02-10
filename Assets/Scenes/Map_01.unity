@@ -2526,9 +2526,9 @@ MonoBehaviour:
       m_Calls: []
   MovementData: {fileID: 0}
   IdleState: {fileID: 1703468976}
-  Acceleration: 50
-  Deceleration: 50
-  MaxSpeed: 6
+  Acceleration: 10
+  Deceleration: 10
+  MaxSpeed: 10
 --- !u!4 &1723639229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1491285936534081520, guid: 0907eca1528688a4aaff181a85229cbe, type: 3}

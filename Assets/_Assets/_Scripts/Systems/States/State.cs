@@ -81,5 +81,16 @@ namespace _Assets._Scripts.Systems.States
            
         }
         #endregion
+        public static void DumpToConsole(object obj)
+        {
+            var output = JsonUtility.ToJson(obj, true);
+            Debug.Log(output);
+        }
     }
 }
+
+/*
+ * Essa é a classe abstrata que serve de base para as classes de estado (IdleState, MovementState, etc)
+ * Ela instancia o Agent, dando acesso aos eventos de input e tudo o mais que possuímos em Agent
+ * com isso associa esses eventos à aos métodos de Handle.
+ */

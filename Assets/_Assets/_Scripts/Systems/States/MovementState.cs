@@ -6,6 +6,7 @@ namespace _Assets._Scripts.Systems.States
     public class MovementState : State
     {
         [SerializeField] protected MovementData MovementData;
+        [Header("Settings")] [Space(10)]
         public State IdleState;
 
         public float Acceleration, Deceleration, MaxSpeed;

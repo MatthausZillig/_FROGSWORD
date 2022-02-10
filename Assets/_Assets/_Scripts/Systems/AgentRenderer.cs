@@ -11,3 +11,7 @@ namespace _Assets._Scripts.Systems
         } 
     }
 }
+
+/*
+*  Essa Classe serve apenas para fazer o flip do sprite do agent
+*/
