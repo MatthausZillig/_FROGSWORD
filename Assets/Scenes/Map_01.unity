@@ -226,6 +226,10 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   AnimationManager: {fileID: 0}
   AgentRenderer: {fileID: 0}
+  currentState: {fileID: 0}
+  previousState: {fileID: 0}
+  IdleState: {fileID: 1703468976}
+  stateName: 
 --- !u!114 &671078540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2501,7 +2505,7 @@ MonoBehaviour:
   OnExit:
     m_PersistentCalls:
       m_Calls: []
-  MoveState: {fileID: 0}
+  MoveState: {fileID: 1703468977}
 --- !u!114 &1703468977
 MonoBehaviour:
   m_ObjectHideFlags: 0

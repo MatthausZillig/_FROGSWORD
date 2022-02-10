@@ -1,6 +1,7 @@
 using System;
 using _Assets._Input;
 using _Assets._Scripts.Systems.States;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 namespace _Assets._Scripts.Systems
@@ -13,44 +14,60 @@ namespace _Assets._Scripts.Systems
         public AgentAnimation AnimationManager;
         public AgentRenderer AgentRenderer;
 
+        public State currentState = null, previousState = null;
+        public State IdleState;
+
+        [Header("State debugging:")]
+        public string stateName = "";
+
         private void Awake()
         {
             rb2d = GetComponent<Rigidbody2D>();
             PlayerInput = GetComponentInParent<IAgentInput>();
             AnimationManager = GetComponentInChildren<AgentAnimation>();
             AgentRenderer = GetComponentInChildren<AgentRenderer>();
+            State[] states = GetComponentsInChildren<State>();
+            foreach (var state in states)
+            {
+                state.InitializeState(this);
+            }
         }
 
         private void Start()
         {
-            PlayerInput.OnMovement += HandleMovement;
             PlayerInput.OnMovement += AgentRenderer.FaceDirection;
+            TransitionToState(IdleState);
         }
         
-        public void TransitionToState(State desiredState, State callingState)
+        internal void TransitionToState(State desiredState)
         {
-            throw new NotImplementedException();
+            if (desiredState == null)
+                return;
+            if (currentState != null)
+                currentState.Exit();
+            previousState = currentState;
+            currentState = desiredState;
+            currentState.Enter();
+            DebuggingState();
+            
         }
 
-        private void HandleMovement(Vector2 input)
+        private void DebuggingState()
         {
-            if (Mathf.Abs(input.x) > 0)
+            if (previousState == null || previousState.GetType() != currentState.GetType())
             {
-                if (Mathf.Abs(rb2d.velocity.x) < 0.01f)
-                {
-                    AnimationManager.PlayAnimation(AnimationType.run);
-                }
-                rb2d.velocity = new Vector2(input.x * 5, rb2d.velocity.y);
-            }
-            else
-            {
-                if (Mathf.Abs(rb2d.velocity.x) > 0.01f)
-                {
-                    AnimationManager.PlayAnimation(AnimationType.idle);
-                }
-                rb2d.velocity = new Vector2(0, rb2d.velocity.y);
+                stateName = currentState.GetType().ToString();
             }
         }
-        
+
+        private void Update()
+        {
+            currentState.StateUpdate();
+        }
+
+        private void FixedUpdate()
+        {
+            currentState.StateFixedUpdate();
+        }
     }
 }
