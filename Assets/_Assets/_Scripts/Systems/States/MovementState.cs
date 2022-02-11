@@ -79,3 +79,10 @@ namespace _Assets._Scripts.Systems.States
         }
     }
 }
+
+/*
+ * Classe que gerencia o state de Movement, ela herda de State, nela também utilizamos o MovementData para pegar os
+ * dados e fazer os cálculos necessários para a movimentação do usuário: Direction, Speed e com isso saber a Velocity.
+ * No StateUpdate os métodos são chamados e setados, assim como é feita a transição de estado caso nenhum input de
+ * movimento seja computado.
+ */

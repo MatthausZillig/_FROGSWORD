@@ -226,6 +226,7 @@ MonoBehaviour:
   rb2d: {fileID: 0}
   AnimationManager: {fileID: 0}
   AgentRenderer: {fileID: 0}
+  GroundDetector: {fileID: 0}
   currentState: {fileID: 0}
   previousState: {fileID: 0}
   IdleState: {fileID: 1703468976}
@@ -388,6 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 905841756}
   - component: {fileID: 905841757}
+  - component: {fileID: 905841758}
   m_Layer: 15
   m_Name: GroundCollider
   m_TagString: Untagged
@@ -425,6 +427,29 @@ CapsuleCollider2D:
   m_Offset: {x: -0.03678769, y: -0.04936409}
   m_Size: {x: 0.5735754, y: 1.1666439}
   m_Direction: 0
+--- !u!114 &905841758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 905841755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75563f998520b4046993987bb5b8a504, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AgentCollider: {fileID: 905841757}
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 2112
+  IsGrounded: 0
+  BoxCastYOffset: -0.48
+  BoxCastXOffset: -0.02
+  BoxCastWidth: 0.5
+  BoxCastHeight: 0.25
+  GizmoColorNotGrounded: {r: 1, g: 0, b: 0, a: 1}
+  GizmoColorGrounded: {r: 0, g: 1, b: 0, a: 1}
 --- !u!4 &955168734 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6887696755382660268, guid: 4818c246dbba1c64e90b48a323194c79, type: 3}
@@ -2296,7 +2321,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1607263056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5656837, y: 0.044391543, z: -1.577946}
+  m_LocalPosition: {x: 1.3, y: 3.81, z: -1.577946}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 671078538}
