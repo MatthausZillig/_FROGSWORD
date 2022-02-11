@@ -14,6 +14,8 @@ namespace _Assets._Scripts.Systems
         public IAgentInput PlayerInput;
         public AgentAnimation AnimationManager;
         public AgentRenderer AgentRenderer;
+        public GroundDetector GroundDetector;
+        
         [SerializeField] [Header("State")] public State currentState = null;
         public State previousState = null;
         public State IdleState;
@@ -28,6 +30,8 @@ namespace _Assets._Scripts.Systems
             PlayerInput = GetComponentInParent<IAgentInput>();
             AnimationManager = GetComponentInChildren<AgentAnimation>();
             AgentRenderer = GetComponentInChildren<AgentRenderer>();
+            GroundDetector = GetComponentInChildren<GroundDetector>();
+            
             var states = GetComponentsInChildren<State>();
             foreach (var state in states)
             {
@@ -48,6 +52,7 @@ namespace _Assets._Scripts.Systems
 
         private void FixedUpdate()
         {
+            GroundDetector.CheckIsPrivate();
             currentState.StateFixedUpdate();
         }
         

@@ -19,3 +19,8 @@ namespace _Assets._Scripts.Systems.States
       }
    }
 }
+
+/*
+ * Classe que gerencia o state de Idle, ela herda de State e se utiliza do método EnterState para dar play na animação
+ * de Idle, além de utilizar o HandleMovement para fazer a transição de estado caso o input de movimento seja computado.
+ */
