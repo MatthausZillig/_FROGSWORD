@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e5912374a87be54d9b2d3fd7b1bd93e, type: 3}
-  m_Name: PlayerAgentData
+  m_Name: EPlayerAgentData
   m_EditorClassIdentifier: 
-  MaxSpeed: 10
-  Acceleration: 70
-  Deceleration: 20
+  MaxSpeed: 6
+  Acceleration: 50
+  Deceleration: 50
   JumpForce: 12
   GravityMultiplier: 2
-  GravityModifier: 2
+  GravityModifier: 0.08
