@@ -36,23 +36,20 @@ namespace _Assets._Scripts.Systems.States
             }
         }
 
-        private void SetPlayerVelocity()
+        protected void SetPlayerVelocity()
         {
             _agent.rb2d.velocity = MovementData.CurrentVelocity;
         }
 
-        private void CalculateVelocity()
+        protected void CalculateVelocity()
         {
             CalculateSpeed(_agent.PlayerInput.MovementVector, MovementData);
             CalculateHorizontalDirection(MovementData);
-            MovementData.CurrentVelocity =
-                Vector3.right * MovementData.HorizontalMovementDirection * MovementData.CurrentSpeed;
-
-            var movementDataCurrentVelocity = MovementData.CurrentVelocity;
-            movementDataCurrentVelocity.y = _agent.rb2d.velocity.y;
+            MovementData.CurrentVelocity = Vector3.right * MovementData.HorizontalMovementDirection * MovementData.CurrentSpeed;
+            MovementData.CurrentVelocity.y = _agent.rb2d.velocity.y;
         }
 
-        private void CalculateHorizontalDirection(MovementData movementData)
+        protected void CalculateHorizontalDirection(MovementData movementData)
         {
             if (_agent.PlayerInput.MovementVector.x > 0)
             {
@@ -64,7 +61,7 @@ namespace _Assets._Scripts.Systems.States
             }
         }
 
-        private void CalculateSpeed(Vector2 playerInputMovementVector, MovementData movementData)
+        protected void CalculateSpeed(Vector2 playerInputMovementVector, MovementData movementData)
         {
             if (Mathf.Abs(playerInputMovementVector.x) > 0)
             {

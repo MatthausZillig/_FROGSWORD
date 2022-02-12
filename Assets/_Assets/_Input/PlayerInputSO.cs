@@ -10,7 +10,7 @@ namespace _Assets._Input
    {
       #region Variables
 
-      private PlayerInputConfig _input;
+      PlayerInputConfig input;
       
       public event Action OnMenu;
       public event Action OnAttackPressed;
@@ -24,16 +24,16 @@ namespace _Assets._Input
       #endregion
       private void OnEnable()
       {
-         if (_input != null) return;
-         _input = new PlayerInputConfig();
-         _input.PlayerMovement.SetCallbacks(this);
-         _input.PlayerMovement.SetCallbacks(this);
-         _input.PlayerMovement.Enable();
+         if (input != null) return;
+         input = new PlayerInputConfig();
+         input.PlayerMovement.SetCallbacks(this);
+         input.PlayerMovement.SetCallbacks(this);
+         input.PlayerMovement.Enable();
       }
 
       private void OnDisable()
       {
-         _input = null;
+         input = null;
          ResetEvents();
       }
 
@@ -54,15 +54,15 @@ namespace _Assets._Input
       {
          if (context.phase != InputActionPhase.Performed) return;
          OnMenu?.Invoke();
-         _input.PlayerMovement.Disable();
-         _input.PauseMenu.Enable();
+         input.PlayerMovement.Disable();
+         input.PauseMenu.Enable();
       }
       public void OnExitMenu(InputAction.CallbackContext context)
       {
          if (context.phase != InputActionPhase.Performed) return;
          OnMenu?.Invoke();
-         _input.PauseMenu.Disable();
-         _input.PlayerMovement.Enable();
+         input.PauseMenu.Disable();
+         input.PlayerMovement.Enable();
       }
       
       public void OnMoveAgent(InputAction.CallbackContext context)

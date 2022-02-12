@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 671078539}
   - component: {fileID: 671078540}
   m_Layer: 0
-  m_Name: Agent
+  m_Name: ---Agent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -227,7 +227,7 @@ MonoBehaviour:
   AnimationManager: {fileID: 0}
   AgentRenderer: {fileID: 0}
   GroundDetector: {fileID: 0}
-  currentState: {fileID: 0}
+  CurrentState: {fileID: 0}
   previousState: {fileID: 0}
   IdleState: {fileID: 1703468976}
   stateName: 
@@ -325,7 +325,7 @@ GameObject:
   m_Component:
   - component: {fileID: 745793127}
   m_Layer: 0
-  m_Name: Environment
+  m_Name: ----Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ GameObject:
   m_Component:
   - component: {fileID: 869797120}
   m_Layer: 0
-  m_Name: Setup
+  m_Name: ----Setup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -444,10 +444,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2112
   IsGrounded: 0
-  BoxCastYOffset: -0.48
+  BoxCastYOffset: -0.46
   BoxCastXOffset: -0.02
-  BoxCastWidth: 0.5
-  BoxCastHeight: 0.25
+  BoxCastWidth: 0.607
+  BoxCastHeight: 0.269
   GizmoColorNotGrounded: {r: 1, g: 0, b: 0, a: 1}
   GizmoColorGrounded: {r: 0, g: 1, b: 0, a: 1}
 --- !u!4 &955168734 stripped
@@ -2291,7 +2291,7 @@ GameObject:
   - component: {fileID: 1607263058}
   - component: {fileID: 1607263057}
   m_Layer: 0
-  m_Name: Player
+  m_Name: ----Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2466,6 +2466,18 @@ MonoBehaviour:
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
+  - Type: 0
+    Name: 
+    GameObject: {fileID: 1607263056}
+    Ordinal: 9
+    Priority: 0
+    IconType: 2000
+    IconTexture: {fileID: 0}
+    IsIconRecursive: 0
+    BackgroundType: 20
+    BackgroundTexture: {fileID: 0}
+    IsBackgroundRecursive: 0
+    IsHidden: 0
 --- !u!4 &1628749269
 Transform:
   m_ObjectHideFlags: 0
@@ -2491,6 +2503,7 @@ GameObject:
   - component: {fileID: 1703468975}
   - component: {fileID: 1703468976}
   - component: {fileID: 1703468977}
+  - component: {fileID: 1703468978}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -2524,6 +2537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cab95dc0007882a49b89a441989a77c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JumpState: {fileID: 1703468978}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -2543,6 +2557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82122b18ae1ad6f4cb4ab620171946bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JumpState: {fileID: 1703468978}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -2551,9 +2566,36 @@ MonoBehaviour:
       m_Calls: []
   MovementData: {fileID: 0}
   IdleState: {fileID: 1703468976}
-  Acceleration: 10
-  Deceleration: 10
-  MaxSpeed: 10
+  Acceleration: 50
+  Deceleration: 50
+  MaxSpeed: 6
+--- !u!114 &1703468978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703468974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72366f64d83ead24395e36dcfa5ad26b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpState: {fileID: 1703468978}
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  MovementData: {fileID: 0}
+  IdleState: {fileID: 1703468976}
+  Acceleration: 50
+  Deceleration: 50
+  MaxSpeed: 6
+  JumpForce: 12
+  GravityMultiplier: 2
+  FallState: {fileID: 1703468976}
 --- !u!4 &1723639229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1491285936534081520, guid: 0907eca1528688a4aaff181a85229cbe, type: 3}

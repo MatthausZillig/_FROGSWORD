@@ -25,6 +25,7 @@ namespace _Assets._Scripts.Systems
                     Play("Run");
                     break;
                 case AnimationType.jump:
+                    Play("Jump");
                     break;
                 case AnimationType.dash:
                     break;
@@ -33,6 +34,7 @@ namespace _Assets._Scripts.Systems
                 case AnimationType.land:
                     break;
                 case AnimationType.fall:
+                    Play("Fall");
                     break;
                 case AnimationType.attack:
                     break;

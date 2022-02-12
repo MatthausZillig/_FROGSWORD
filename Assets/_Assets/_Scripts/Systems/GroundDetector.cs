@@ -26,12 +26,19 @@ namespace _Assets._Scripts.Systems
                 AgentCollider = GetComponent<Collider2D>();
         }
     
-        public void CheckIsPrivate()
+        public void CheckIsGrounded()
         {
             var raycastHit2D =
                 Physics2D.BoxCast(AgentCollider.bounds.center + new Vector3(BoxCastXOffset, BoxCastYOffset, 0),
                     new Vector2(BoxCastWidth, BoxCastHeight), 0, Vector2.down, 0, GroundMask);
-            IsGrounded = raycastHit2D.collider != null;
+            if(raycastHit2D.collider != null)
+            {
+                IsGrounded = true;
+            }
+            else
+            {
+                IsGrounded = false;
+            }
         }
 
         private void OnDrawGizmos()

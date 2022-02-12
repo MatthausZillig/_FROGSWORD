@@ -5,8 +5,8 @@ namespace _Assets._Scripts.Systems.States
 {
     public abstract class State : MonoBehaviour
     {
+        [SerializeField] protected State JumpState;
         protected Agent _agent;
-
         public UnityEvent OnEnter, OnExit;
 
         public void InitializeState(Agent agent)
@@ -41,6 +41,15 @@ namespace _Assets._Scripts.Systems.States
 
         protected virtual void HandleJumpPressed()
         {
+            TestJumpTransition();
+        }
+
+        private void TestJumpTransition()
+        {
+            if (_agent.GroundDetector.IsGrounded)
+            {
+                _agent.TransitionToState(JumpState);
+            }
         }
 
         protected virtual void HandleDash()
@@ -81,11 +90,6 @@ namespace _Assets._Scripts.Systems.States
            
         }
         #endregion
-        public static void DumpToConsole(object obj)
-        {
-            var output = JsonUtility.ToJson(obj, true);
-            Debug.Log(output);
-        }
     }
 }
 
