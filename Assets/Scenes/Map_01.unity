@@ -224,6 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb2d: {fileID: 0}
+  AgentData: {fileID: 11400000, guid: 26febdb08a623fd4a836198d92ea50c8, type: 2}
   AnimationManager: {fileID: 0}
   AgentRenderer: {fileID: 0}
   GroundDetector: {fileID: 0}
@@ -2504,6 +2505,7 @@ GameObject:
   - component: {fileID: 1703468976}
   - component: {fileID: 1703468977}
   - component: {fileID: 1703468978}
+  - component: {fileID: 1703468979}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -2538,6 +2540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpState: {fileID: 1703468978}
+  FallState: {fileID: 1703468979}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -2558,6 +2561,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpState: {fileID: 1703468978}
+  FallState: {fileID: 1703468979}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -2566,9 +2570,6 @@ MonoBehaviour:
       m_Calls: []
   MovementData: {fileID: 0}
   IdleState: {fileID: 1703468976}
-  Acceleration: 50
-  Deceleration: 50
-  MaxSpeed: 6
 --- !u!114 &1703468978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2582,6 +2583,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   JumpState: {fileID: 1703468978}
+  FallState: {fileID: 1703468979}
   OnEnter:
     m_PersistentCalls:
       m_Calls: []
@@ -2590,12 +2592,29 @@ MonoBehaviour:
       m_Calls: []
   MovementData: {fileID: 0}
   IdleState: {fileID: 1703468976}
-  Acceleration: 50
-  Deceleration: 50
-  MaxSpeed: 6
-  JumpForce: 12
-  GravityMultiplier: 2
-  FallState: {fileID: 1703468976}
+--- !u!114 &1703468979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703468974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03cb25f45ee82849b60e746927aacc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  JumpState: {fileID: 1703468978}
+  FallState: {fileID: 0}
+  OnEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  OnExit:
+    m_PersistentCalls:
+      m_Calls: []
+  MovementData: {fileID: 0}
+  IdleState: {fileID: 1703468976}
+  JumpState: {fileID: 1703468978}
 --- !u!4 &1723639229 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1491285936534081520, guid: 0907eca1528688a4aaff181a85229cbe, type: 3}

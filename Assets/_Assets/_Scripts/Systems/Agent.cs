@@ -1,5 +1,6 @@
 using System;
 using _Assets._Input;
+using _Assets._Scripts.Data;
 using _Assets._Scripts.Systems.States;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace _Assets._Scripts.Systems
         [SerializeField] [Header("Components")]
         public Rigidbody2D rb2d;
         public IAgentInput PlayerInput;
+        public AgentDataSO AgentData;
         public AgentAnimation AnimationManager;
         public AgentRenderer AgentRenderer;
         public GroundDetector GroundDetector;
