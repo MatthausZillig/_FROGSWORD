@@ -5,8 +5,8 @@ namespace _Assets._Scripts.Systems.States
 {
     public abstract class State : MonoBehaviour
     {
+        [SerializeField] protected State JumpState, FallState;
         protected Agent _agent;
-
         public UnityEvent OnEnter, OnExit;
 
         public void InitializeState(Agent agent)
@@ -41,6 +41,7 @@ namespace _Assets._Scripts.Systems.States
 
         protected virtual void HandleJumpPressed()
         {
+            TestJumpTransition();
         }
 
         protected virtual void HandleDash()
@@ -55,9 +56,9 @@ namespace _Assets._Scripts.Systems.States
         #region Update
         public virtual void StateUpdate()
         {
-            
+            TestFallTransition();
         }
-
+        
         public virtual void StateFixedUpdate()
         {
             
@@ -81,11 +82,23 @@ namespace _Assets._Scripts.Systems.States
            
         }
         #endregion
-        public static void DumpToConsole(object obj)
+        
+        #region Tests
+        private void TestJumpTransition()
         {
-            var output = JsonUtility.ToJson(obj, true);
-            Debug.Log(output);
+            if (_agent.GroundDetector.IsGrounded)
+            {
+                _agent.TransitionToState(JumpState);
+            }
         }
+        protected bool TestFallTransition()
+        {
+            if (_agent.GroundDetector.IsGrounded != false) return false;
+            _agent.TransitionToState(FallState);
+            return true;
+
+        }
+        #endregion
     }
 }
 

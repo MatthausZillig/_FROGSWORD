@@ -1,5 +1,6 @@
 using System;
 using _Assets._Input;
+using _Assets._Scripts.Data;
 using _Assets._Scripts.Systems.States;
 using UnityEditor.Rendering;
 using UnityEngine;
@@ -12,11 +13,12 @@ namespace _Assets._Scripts.Systems
         [SerializeField] [Header("Components")]
         public Rigidbody2D rb2d;
         public IAgentInput PlayerInput;
+        public AgentDataSO AgentData;
         public AgentAnimation AnimationManager;
         public AgentRenderer AgentRenderer;
         public GroundDetector GroundDetector;
         
-        [SerializeField] [Header("State")] public State currentState = null;
+        [SerializeField] [Header("State")] public State CurrentState = null;
         public State previousState = null;
         public State IdleState;
 
@@ -47,13 +49,13 @@ namespace _Assets._Scripts.Systems
         
         private void Update()
         {
-            currentState.StateUpdate();
+            CurrentState.StateUpdate();
         }
 
         private void FixedUpdate()
         {
-            GroundDetector.CheckIsPrivate();
-            currentState.StateFixedUpdate();
+            GroundDetector.CheckIsGrounded();
+            CurrentState.StateFixedUpdate();
         }
         
         #region Transition State
@@ -61,11 +63,11 @@ namespace _Assets._Scripts.Systems
         {
             if (desiredState == null)
                 return;
-            if (currentState != null)
-                currentState.Exit();
-            previousState = currentState;
-            currentState = desiredState;
-            currentState.Enter();
+            if (CurrentState != null)
+                CurrentState.Exit();
+            previousState = CurrentState;
+            CurrentState = desiredState;
+            CurrentState.Enter();
             DebuggingState();
             
         }
@@ -74,9 +76,9 @@ namespace _Assets._Scripts.Systems
         #region Debugging
         private void DebuggingState()
         {
-            if (previousState == null || previousState.GetType() != currentState.GetType())
+            if (previousState == null || previousState.GetType() != CurrentState.GetType())
             {
-                stateName = currentState.GetType().ToString();
+                stateName = CurrentState.GetType().ToString();
             }
         }
         #endregion
