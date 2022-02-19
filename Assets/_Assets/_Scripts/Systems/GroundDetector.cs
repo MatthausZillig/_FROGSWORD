@@ -33,7 +33,8 @@ namespace _Assets._Scripts.Systems
                     new Vector2(BoxCastWidth, BoxCastHeight), 0, Vector2.down, 0, GroundMask);
             if(raycastHit2D.collider != null)
             {
-                IsGrounded = true;
+                if(raycastHit2D.collider.IsTouching(AgentCollider) == true)
+                    IsGrounded = true;
             }
             else
             {
